@@ -2,11 +2,48 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App2.RegistrationPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="RoundedEntryStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="30"/>
+                <Setter Property="BorderColor" Value="#FF7518"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="WidthRequest" Value="285"/>
+                <Setter Property="HeightRequest" Value="45"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Размер строки для изображения -->
+            <RowDefinition Height="*"/>
+            <!-- Размер строки для остальных элементов -->
+        </Grid.RowDefinitions>
+
+        <Image x:Name="regImage" Grid.Row="0" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+        <Label Text="РЕГИСТРАЦИЯ" Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="38" FontAttributes="Bold" TextColor="#5E17EB" FontFamily="conthrax-sb"/>
+        <StackLayout Grid.Row="0" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Padding="0,2" Margin="0,15">
+            <Frame Style="{StaticResource RoundedEntryStyle}">
+                <Entry x:Name="nameField" TextColor="#5E17EB" Placeholder="ВВЕДИТЕ ВАШЕ ИМЯ" PlaceholderColor="#FF7518" HorizontalOptions="CenterAndExpand" 
+            HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
+            </Frame>
+            <Frame Style="{StaticResource RoundedEntryStyle}">
+                <Entry x:Name="emailField" TextColor="#5E17EB" Placeholder="ВВЕДИТЕ ВАШ E-MAIL" PlaceholderColor="#FF7518" HorizontalOptions="CenterAndExpand" 
+                        HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
+            </Frame>
+            <Frame Style="{StaticResource RoundedEntryStyle}">
+                <Entry x:Name="checkField" TextColor="#5E17EB" IsPassword="True" Placeholder="ВВЕДИТЕ ВАШ ПАРОЛЬ" PlaceholderColor="#FF7518" HorizontalOptions="CenterAndExpand" 
+                        HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
+            </Frame>
+            <Frame Style="{StaticResource RoundedEntryStyle}">
+                <Entry x:Name="passField" TextColor="#5E17EB" IsPassword="True" Placeholder="ПОТДВЕРДИТЕ ПАРОЛЬ" PlaceholderColor="#FF7518" HorizontalOptions="CenterAndExpand" 
+            HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
+            </Frame>
+            <Button x:Name="regButton" WidthRequest="300" Text="РЕГИСТРАЦИЯ" TextColor="White" BackgroundColor="#FF7518" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="RegButtonClicked" CornerRadius="45" FontFamily="conthrax-sb"/>
+            </StackLayout>
+
+    </Grid>
 </ContentPage>

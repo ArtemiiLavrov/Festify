@@ -26,28 +26,22 @@
         
         <Image x:Name="regImage" Grid.Row="0" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
         <Label Text="FESTIFY" Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="38" FontAttributes="Bold" TextColor="#5E17EB" FontFamily="conthrax-sb"/>
-        <StackLayout Grid.Row="0" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Padding="0,95" >
-            <Frame Style="{StaticResource RoundedEntryStyle}">
-                <Entry x:Name="nameField" TextColor="#5E17EB" Placeholder="ВВЕДИТЕ ВАШЕ ИМЯ" PlaceholderColor="#FF7518" HorizontalOptions="CenterAndExpand" 
-                           HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
-            </Frame>
+        <StackLayout Grid.Row="0" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Padding="0,35" Margin="0,15">
             <Frame Style="{StaticResource RoundedEntryStyle}">
                 <Entry x:Name="emailField" TextColor="#5E17EB" Placeholder="ВВЕДИТЕ ВАШ E-MAIL" PlaceholderColor="#FF7518" HorizontalOptions="CenterAndExpand" 
-                           HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
+                            HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
             </Frame>
             <Frame Style="{StaticResource RoundedEntryStyle}">
                 <Entry x:Name="passField" TextColor="#5E17EB" IsPassword="True" Placeholder="ВВЕДИТЕ ВАШ ПАРОЛЬ" PlaceholderColor="#FF7518" HorizontalOptions="CenterAndExpand" 
-                           HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
+                            HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
             </Frame>
 
-            
-            <Label x:Name="errText" Text="" TextColor="Red" FontSize="15"/>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
+                <Button x:Name="logButton" WidthRequest="115" Text="Войти" TextColor="White" BackgroundColor="#FF7518" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="LogButtonClick" CornerRadius="45" FontFamily="conthrax-sb"/>
+                <Button x:Name="regButton" WidthRequest="170" Text="РЕГИСТРАЦИЯ" TextColor="White" BackgroundColor="#FF7518" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="RegButtonClicked" CornerRadius="45" FontFamily="conthrax-sb"/>
+            </StackLayout>
+            <Button Text="Забыли пароль?" Grid.Row="0" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Background="Transparent" FontFamily="conthrax-sb" Clicked="ResetPasswordClicked"/>
         </StackLayout>
-        <Button Text="Забыли пароль?" Grid.Row="0" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Padding="0,7" Background="Transparent" FontFamily="conthrax-sb"/>
-        <StackLayout Orientation="Horizontal" Grid.Row="0" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Padding="0,50">
-            <Button x:Name="logButton" WidthRequest="115" Text="Войти" TextColor="White" BackgroundColor="#FF7518" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="LogButtonClick" CornerRadius="45" FontFamily="conthrax-sb"/>
-            <Button x:Name="regButton" WidthRequest="170" Text="РЕГИСТРАЦИЯ" TextColor="White" BackgroundColor="#FF7518" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="RegButtonClicked" CornerRadius="45" FontFamily="conthrax-sb"/>
-        </StackLayout>
-
+        
     </Grid>
 </ContentPage>
