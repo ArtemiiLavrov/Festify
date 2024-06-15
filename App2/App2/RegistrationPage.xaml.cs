@@ -30,6 +30,7 @@ namespace App2
             Regex validateEmailRegex = new Regex("^\\S+@\\S+\\.\\S+$");
             string email = emailField.Text;
             string password = passField.Text;
+            string checkPass = checkField.Text;
             if (string.IsNullOrEmpty(nameField.Text))
             {
                 //errText.Text = "Имя не указано";
@@ -56,6 +57,10 @@ namespace App2
             {
                 await DisplayAlert("Пароль", "Для сохранения безопасности Ваших данных пароль хотя бы один символ из следующего набора: !, *, #", "Хорошо");
             }
+            else if (checkPass != password)
+            {
+                await DisplayAlert("Пароль", "Пароли не совпадают", "Хорошо");
+            }
             else
             {                
                 var fireBase = DependencyService.Get<IFirebaseAuthentificator>();
@@ -72,7 +77,7 @@ namespace App2
                     var userModel = new User()
                     {
                         Email = email,
-                        //Password = password
+                        Name = nameField.Text
                     };
                     var response = await client.Child("").PostAsync(userModel); 
                     regButton.Text = "УСПЕХ";

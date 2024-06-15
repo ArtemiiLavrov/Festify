@@ -10,7 +10,7 @@ namespace App2
         public MainPage()
         {
             InitializeComponent();
-            regImage.Source = ImageSource.FromResource("App2.Images.regimage.png");
+            regImage.Source = ImageSource.FromResource("App2.Images.main.png");
         }
         Regex validateEmailRegex = new Regex("^\\S+@\\S+\\.\\S+$");
         private async void LogButtonClick(object sender, EventArgs e)
@@ -55,6 +55,10 @@ namespace App2
                     }
                     logButton.Text = "УСПЕХ";
                     logButton.TextColor = Color.FromHex("#5E17EB");
+                    var menuPlusWorkPage = new MyMasterDetailPage(new MenuPage(), new WorkPage());
+                    NavigationPage.SetHasBackButton(menuPlusWorkPage, false);
+                    NavigationPage.SetHasNavigationBar(menuPlusWorkPage, false);
+                    await Navigation.PushAsync(menuPlusWorkPage);
                 }
                 catch
                 {

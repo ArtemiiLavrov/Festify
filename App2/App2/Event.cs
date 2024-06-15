@@ -27,8 +27,9 @@ namespace App2
                 // Количество рублей не может быть меньше 0
                 if (value < 0)
                 {
-                    throw new Exception("Incorrect value of rub");
                     rub = 0;
+                    throw new Exception("Incorrect value of rub");
+                    
                 }
                 else rub = value;
             }
@@ -46,8 +47,9 @@ namespace App2
                 // Количество копеек не может быть меньше 0
                 if (value < 0)
                 {
-                    throw new Exception("Incorrect value of kop");
                     kop = 0;
+                    throw new Exception("Incorrect value of kop");
+                    
                 }
                 // При значении для копеек больше 99
                 if (value > 99)

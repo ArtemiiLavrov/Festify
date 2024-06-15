@@ -28,9 +28,17 @@ namespace App2.Droid
 
         public async Task<string> SignWithEmailAndPasswordAsync(string email, string password)
         {
-            var authResult = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
-            var getTokenResult = await authResult.User.GetIdTokenAsync(false);
-            return getTokenResult.Token;
+            try
+            {
+                var authResult = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
+                var getTokenResult = await authResult.User.GetIdTokenAsync(false);
+                return getTokenResult.Token;
+            }
+            catch 
+            {
+                throw new Exception("Ошибка аутентификации");
+            }
+            
         }
         public async Task SendPasswordResetEmailAsync(string email)
         {

@@ -8,7 +8,7 @@ namespace App2
     {
         public string Email { get; set; }
         public string Name { get; set; }
-        public HashSet<Event> Events { get; set; } 
+        public List<string> EventLinks { get; set; }
         public string Id { get; set; }
     }
 }

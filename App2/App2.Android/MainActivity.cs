@@ -4,6 +4,8 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Android.Content;
+using Android.Preferences;
 
 namespace App2.Droid
 {
@@ -24,6 +26,21 @@ namespace App2.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        // Сохранение токена доступа при успешной авторизации
+        public void SaveAccessToken(string accessToken)
+        {
+            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
+            ISharedPreferencesEditor editor = prefs.Edit();
+            editor.PutString("accessToken", accessToken);
+            editor.Apply();
+        }
+
+        // Проверка состояния авторизации при запуске приложения
+        private bool IsUserLoggedIn()
+        {
+            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
+            return !string.IsNullOrEmpty(prefs.GetString("accessToken", null));
         }
     }
 }
