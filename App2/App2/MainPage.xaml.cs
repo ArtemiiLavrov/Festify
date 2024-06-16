@@ -11,6 +11,8 @@ namespace App2
         {
             InitializeComponent();
             regImage.Source = ImageSource.FromResource("App2.Images.main.png");
+            NavigationPage.SetHasBackButton(this, false);
+            NavigationPage.SetHasNavigationBar(this, false);
         }
         Regex validateEmailRegex = new Regex("^\\S+@\\S+\\.\\S+$");
         private async void LogButtonClick(object sender, EventArgs e)

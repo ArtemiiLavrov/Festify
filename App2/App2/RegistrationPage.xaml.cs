@@ -22,7 +22,7 @@ namespace App2
 		public RegistrationPage ()
 		{
 			InitializeComponent();
-            regImage.Source = ImageSource.FromResource("App2.Images.regimage.png");
+            regImage.Source = ImageSource.FromResource("App2.Images.main.png");
         }
        FirebaseClient client = new FirebaseClient("https://bulletin-app-1644c-default-rtdb.europe-west1.firebasedatabase.app/Users");
         public async void RegButtonClicked(object sender, EventArgs e)

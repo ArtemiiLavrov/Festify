@@ -7,7 +7,7 @@
         <ResourceDictionary>
             <Style x:Key="RoundedEntryStyle" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="30"/>
-                <Setter Property="BorderColor" Value="#FF7518"/>
+                <Setter Property="BorderColor" Value="#952ab8"/>
                 <Setter Property="BackgroundColor" Value="White"/>
                 <Setter Property="WidthRequest" Value="285"/>
                 <Setter Property="HeightRequest" Value="45"/>
@@ -25,22 +25,22 @@
         </Grid.RowDefinitions>
         
         <Image x:Name="regImage" Grid.Row="0" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
-        <Label Text="FESTIFY" Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="38" FontAttributes="Bold" TextColor="#5E17EB" FontFamily="conthrax-sb"/>
+        <Label Text="FESTIFY" Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="45" FontAttributes="Bold" TextColor="White" FontFamily="conthrax-sb"/>
         <StackLayout Grid.Row="0" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Padding="0,35" Margin="0,15">
             <Frame Style="{StaticResource RoundedEntryStyle}">
-                <Entry x:Name="emailField" TextColor="#5E17EB" Placeholder="ВВЕДИТЕ ВАШ E-MAIL" PlaceholderColor="#FF7518" HorizontalOptions="CenterAndExpand" 
+                <Entry x:Name="emailField" TextColor="#5E17EB" Placeholder="ВВЕДИТЕ ВАШ E-MAIL" PlaceholderColor="#952ab8" HorizontalOptions="CenterAndExpand" 
                             HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
             </Frame>
             <Frame Style="{StaticResource RoundedEntryStyle}">
-                <Entry x:Name="passField" TextColor="#5E17EB" IsPassword="True" Placeholder="ВВЕДИТЕ ВАШ ПАРОЛЬ" PlaceholderColor="#FF7518" HorizontalOptions="CenterAndExpand" 
+                <Entry x:Name="passField" TextColor="#5E17EB" IsPassword="True" Placeholder="ВВЕДИТЕ ВАШ ПАРОЛЬ" PlaceholderColor="#952ab8" HorizontalOptions="CenterAndExpand" 
                             HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
             </Frame>
 
             <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
-                <Button x:Name="logButton" WidthRequest="115" Text="Войти" TextColor="White" BackgroundColor="#FF7518" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="LogButtonClick" CornerRadius="45" FontFamily="conthrax-sb"/>
-                <Button x:Name="regButton" WidthRequest="170" Text="РЕГИСТРАЦИЯ" TextColor="White" BackgroundColor="#FF7518" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="RegButtonClicked" CornerRadius="45" FontFamily="conthrax-sb"/>
+                <Button x:Name="logButton" WidthRequest="115" Text="Войти" TextColor="White" BackgroundColor="#952ab8" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="LogButtonClick" CornerRadius="45" FontFamily="conthrax-sb"/>
+                <Button x:Name="regButton" WidthRequest="170" Text="РЕГИСТРАЦИЯ" TextColor="White" BackgroundColor="#952ab8" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="RegButtonClicked" CornerRadius="45" FontFamily="conthrax-sb"/>
             </StackLayout>
-            <Button Text="Забыли пароль?" Grid.Row="0" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Background="Transparent" FontFamily="conthrax-sb" Clicked="ResetPasswordClicked"/>
+            <Button Text="Забыли пароль?" Grid.Row="0" TextColor="White" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Background="Transparent" FontFamily="conthrax-sb" Clicked="ResetPasswordClicked"/>
         </StackLayout>
         
     </Grid>

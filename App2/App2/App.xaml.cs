@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Android.Content.Res;
+using Android.Service.Autofill;
+using App2.Droid;
+using Newtonsoft.Json;
+using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,8 +14,9 @@ namespace App2
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new MainPage());
+            var newPage = new NavigationPage(new MainPage());
+            newPage.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
+            MainPage = newPage;
         }
 
         protected override void OnStart()

@@ -4,17 +4,7 @@
              x:Class="App2.WorkPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <Label Text="Метка 1" FontSize="23" />
-                <Label Text="Метка 2" FontSize="23" />
-                <Label Text="Метка 1" FontSize="23" />
-                <Label Text="Метка 2" FontSize="23" />
-                <Label Text="Метка 1" FontSize="23" />
-                <Label Text="Метка 2" FontSize="23" />
-                <Label Text="Метка 1" FontSize="23" />
-                <Label Text="Метка 2" FontSize="23" />
-                <!--..................................................-->
-                <Label Text="Метка 3" FontSize="23" />
+            <StackLayout x:Name="Bulletins" Orientation="Vertical">
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
