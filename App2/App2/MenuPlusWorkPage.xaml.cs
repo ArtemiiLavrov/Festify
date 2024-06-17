@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,6 +16,11 @@ namespace App2
         {
             Master = menu; // боковое меню
             Detail = new NavigationPage(work); // основное содержимое страницы
+           
+        }
+        public async void Show()
+        {
+            Task<string> newTask = SecureStorage.GetAsync("username");
         }
     }
 }

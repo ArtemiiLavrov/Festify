@@ -1,6 +1,8 @@
-﻿using App2.Droid;
+﻿using Android.Content;
+using App2.Droid;
 using System;
 using System.Text.RegularExpressions;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace App2
@@ -57,6 +59,7 @@ namespace App2
                     }
                     logButton.Text = "УСПЕХ";
                     logButton.TextColor = Color.FromHex("#5E17EB");
+                    SaveCredentials(email, password);
                     var menuPlusWorkPage = new MyMasterDetailPage(new MenuPage(), new WorkPage());
                     NavigationPage.SetHasBackButton(menuPlusWorkPage, false);
                     NavigationPage.SetHasNavigationBar(menuPlusWorkPage, false);
@@ -67,8 +70,6 @@ namespace App2
                     await DisplayAlert("Авторизация", "Пользователь с таким e-mail не был зарегистрирован", "Зарегистрироваться");
                     await Navigation.PushAsync(new RegistrationPage());
                 }
-
-
             }
         }
         private async void RegButtonClicked(object sender, EventArgs e)
@@ -109,5 +110,11 @@ namespace App2
                 await DisplayAlert("Сброс пароля", "Аккаунта с таким e-mail не существует", "OK");
             }
         }
+        public void SaveCredentials(string username, string password)
+        {
+            SecureStorage.SetAsync("username", username);
+            SecureStorage.SetAsync("password", password);
+        }
+
     }
 }

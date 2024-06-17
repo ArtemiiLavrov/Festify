@@ -14,13 +14,24 @@ namespace App2
         public App()
         {
             InitializeComponent();
-            var newPage = new NavigationPage(new MainPage());
-            newPage.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
-            MainPage = newPage;
+            if ((SecureStorage.GetAsync("username").Result != null) &&
+                SecureStorage.GetAsync("password").Result != null)
+            {
+                MainPage = new MyMasterDetailPage(new MenuPage(), new WorkPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
+            //MainPage.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
+            //MainPage = newPage;
         }
 
         protected override void OnStart()
         {
+            //base.OnStart();
+
+            
         }
 
         protected override void OnSleep()
