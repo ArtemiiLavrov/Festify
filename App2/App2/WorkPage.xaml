@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App2.WorkPage">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView BackgroundColor="Black">
             <StackLayout x:Name="Bulletins" Orientation="Vertical">
             </StackLayout>
         </ScrollView>

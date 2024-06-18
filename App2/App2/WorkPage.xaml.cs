@@ -31,7 +31,7 @@ namespace App2
             };
 
             // Создаем первый StackLayout с изображением и текстом
-            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, newEvent1.Date.ToString(), "App2.Images.logo.jpg");
+            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, newEvent1.Date.ToString(), "App2.Images.main.png");
             var tapGestureRecognizer1 = new TapGestureRecognizer();
             tapGestureRecognizer1.Tapped += (s, e) =>
             {
@@ -42,7 +42,7 @@ namespace App2
             horizontalStack.Children.Add(stackLayout1);
 
             // Создаем второй StackLayout с изображением и текстом
-            StackLayout stackLayout2 = CreateStackLayout(newEvent2.Name, newEvent2.Date.ToString(), "App2.Images.logo.jpg");
+            StackLayout stackLayout2 = CreateStackLayout(newEvent2.Name, newEvent2.Date.ToString(), "App2.Images.main.png");
             var tapGestureRecognizer2 = new TapGestureRecognizer();
             tapGestureRecognizer2.Tapped += EventTapped;
             stackLayout2.GestureRecognizers.Add(tapGestureRecognizer2);
@@ -67,9 +67,9 @@ namespace App2
             Image image = new Image
             {
                 Source = ImageSource.FromResource(imagePath),
-                WidthRequest = 100, // Устанавливаем ширину изображения
-                HeightRequest = 100, // Устанавливаем высоту изображения
-                Aspect = Aspect.AspectFit // Масштабируем изображение под заданные размеры
+                WidthRequest = 185, // Устанавливаем ширину изображения
+                HeightRequest = 185, // Устанавливаем высоту изображения
+                Aspect = Aspect.AspectFill // Обрезаем изображение под заданные размеры
             };
 
             // Создаем текстовые метки

@@ -9,7 +9,7 @@ namespace App2
         public string Name { get; set; }
         public string Type { get; set; }
         public string Description { get; set; }
-        public string Adress { get; set; }
+        public string Address { get; set; }
         public DateTime Date { get; set; }
         public DateTime Duration { get; set; }
         public Money Price { get; set; }
@@ -31,7 +31,7 @@ namespace App2
         public bool Equals(Event other)
         {
             if (GetHashCode() != other.GetHashCode()) return false;
-            if (Name != other.Name || Type != other.Type || Description != other.Description || Adress != other.Adress || Date != other.Date || 
+            if (Name != other.Name || Type != other.Type || Description != other.Description || Address != other.Address || Date != other.Date || 
                 Duration != other.Duration || Price != other.Price || MinimalAge != other.MinimalAge) return false;
             else return true;
         }

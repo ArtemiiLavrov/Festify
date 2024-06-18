@@ -2,10 +2,12 @@
 using Android.Service.Autofill;
 using App2.Droid;
 using Newtonsoft.Json;
+using Plugin.Settings;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static Android.Telecom.Call;
 
 namespace App2
 {
@@ -14,17 +16,19 @@ namespace App2
         public App()
         {
             InitializeComponent();
-            if ((SecureStorage.GetAsync("username").Result != null) &&
-                SecureStorage.GetAsync("password").Result != null)
+            if (Preferences.Get("auth", false) == true)
             {
-                MainPage = new MyMasterDetailPage(new MenuPage(), new WorkPage());
+                var myMasterDetailPage = new MyMasterDetailPage(new MenuPage(), new WorkPage());
+                var navigationPage = new NavigationPage(myMasterDetailPage);
+                //NavigationPage.SetHasNavigationBar(this, false);
+                //NavigationPage.SetHasBackButton(this, false);
+                MainPage = navigationPage;
             }
             else
-            {
+            { 
                 MainPage = new NavigationPage(new MainPage());
             }
-            //MainPage.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
-            //MainPage = newPage;
+           
         }
 
         protected override void OnStart()

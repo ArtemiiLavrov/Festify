@@ -14,13 +14,27 @@ namespace App2
     {
         public MyMasterDetailPage(MenuPage menu, WorkPage work)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             Master = menu; // боковое меню
-            Detail = new NavigationPage(work); // основное содержимое страницы
-           
+            var details = new NavigationPage(work);
+            details.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
+            Detail = details; // основное содержимое страницы
         }
-        public async void Show()
+        public MyMasterDetailPage(MenuPage menu, CreationOfEventPage work)
         {
-            Task<string> newTask = SecureStorage.GetAsync("username");
+            NavigationPage.SetHasNavigationBar(this, false);
+            Master = menu; // боковое меню
+            var details = new NavigationPage(work);
+            details.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
+            Detail = details; // основное содержимое страницы
+        }
+        public MyMasterDetailPage(MenuPage menu, ProfilePage work)
+        {
+            NavigationPage.SetHasNavigationBar(this, false);
+            Master = menu; // боковое меню
+            var details = new NavigationPage(work);
+            details.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
+            Detail = details; // основное содержимое страницы
         }
     }
 }

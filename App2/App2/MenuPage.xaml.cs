@@ -15,15 +15,19 @@ namespace App2
     {
         public MenuPage()
         {
-            InitializeComponent();
             Title = "Menu";
-            //try
-            //{
-            //    //profileIconImage.Source = ImageSource.FromResource("App2.Images.profileIcon.png");
-            //}
-            //catch (Exception ex)
-            //{
-            //}
+            InitializeComponent();
+           
+        }
+        private async void CreateEventButtonClicked(object sender, EventArgs e)
+        {
+            var createEventButtonClicked = new MyMasterDetailPage(new MenuPage(), new CreationOfEventPage());
+            await Navigation.PushAsync(createEventButtonClicked);
+        }
+        private async void ProfileButtonClicked(object sender, EventArgs e)
+        {
+            var createEventButtonClicked = new MyMasterDetailPage(new MenuPage(), new ProfilePage());
+            await Navigation.PushAsync(createEventButtonClicked);
         }
     }
    

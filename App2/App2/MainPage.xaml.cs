@@ -1,5 +1,7 @@
 ﻿using Android.Content;
+using Android.Preferences;
 using App2.Droid;
+using Plugin.Settings;
 using System;
 using System.Text.RegularExpressions;
 using Xamarin.Essentials;
@@ -112,8 +114,7 @@ namespace App2
         }
         public void SaveCredentials(string username, string password)
         {
-            SecureStorage.SetAsync("username", username);
-            SecureStorage.SetAsync("password", password);
+            Preferences.Set("auth", true);
         }
 
     }

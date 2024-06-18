@@ -82,6 +82,10 @@ namespace App2
                     var response = await client.Child("").PostAsync(userModel); 
                     regButton.Text = "УСПЕХ";
                     regButton.TextColor = Color.FromHex("#5E17EB");
+                    var menuPlusWorkPage = new MyMasterDetailPage(new MenuPage(), new WorkPage());
+                    NavigationPage.SetHasBackButton(menuPlusWorkPage, false);
+                    NavigationPage.SetHasNavigationBar(menuPlusWorkPage, false);
+                    await Navigation.PushAsync(menuPlusWorkPage);
                 }
                 catch (Exception ex)
                 {

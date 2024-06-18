@@ -3,8 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App2.MenuPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Button x:Name="profileButton" Text="Мой профиль" BackgroundColor="Black" Font="conthrax-sb"/>
+        <StackLayout x:Name="Back" BackgroundColor="Black" Padding="0,80,0,0">
+            <Label x:Name="title" Text="Меню" TextColor="White" FontFamily = "conthrax-sb" FontAttributes="Bold" FontSize="25" HorizontalOptions="Center"/>
+            <Button x:Name="profileButton" Text="Мой профиль" BackgroundColor="Black" TextColor ="White" Font="conthrax-sb" Clicked="ProfileButtonClicked"/>
+            <Button x:Name="favoriteButton" Text="Избранное" BackgroundColor="Black" TextColor ="White" Font="conthrax-sb"/>
+            <Button x:Name="myEventsButton" Text="Мои объявления" BackgroundColor="Black" TextColor ="White" Font="conthrax-sb"/>
+            <Button x:Name="helpButton" Text="Помощь" BackgroundColor="Black" TextColor ="White" Font="conthrax-sb"/>
+            <Button x:Name="createEventButton" Text="Создать объявление" BackgroundColor="Black" TextColor ="White" Font="conthrax-sb" Clicked ="CreateEventButtonClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
