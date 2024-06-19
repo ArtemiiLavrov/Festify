@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,5 +16,12 @@ namespace App2
         {
             InitializeComponent();
         }
+        private async void DeregButtonClicked(object sender, EventArgs e)
+        {
+            Preferences.Set("auth", false);
+            NavigationPage.SetHasNavigationBar(this, false);
+            await Navigation.PushAsync(new MainPage());
+        }
     }
+
 }

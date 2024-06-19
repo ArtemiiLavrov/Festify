@@ -1,4 +1,4 @@
-﻿using Android.Media;
+﻿
 using Android.Widget;
 using Firebase.Storage;
 using System;
@@ -17,10 +17,7 @@ namespace App2
 
         public async Task<string> UploadImage(System.IO.Stream imageStream, string imageName)
         {
-            var imageUrl = await firebaseStorage
-                .Child("images")
-                .Child(imageName)
-                .PutAsync(imageStream);
+            var imageUrl = await firebaseStorage.Child("images").Child(imageName).PutAsync(imageStream);
 
             return imageUrl;
         }
@@ -30,17 +27,9 @@ namespace App2
             {
                 var imageUrl = await firebaseStorage
                     .Child("images")
-                    .Child(imageName)
-                    .PutAsync(fileStream);
-
+                    .Child(imageName).PutAsync(fileStream);
                 return imageUrl;
             }
-            //public async Task<Stream> DownloadImage(string imageUrl)
-            //{
-
-
-            //    return imageStream;
-            //}
         }
     }
 }

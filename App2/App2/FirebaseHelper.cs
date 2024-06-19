@@ -24,17 +24,18 @@ namespace App2
 
         public async Task<List<Event>> GetEvents(string userId)
         {
-            return (await firebaseClient.Child("events").Child(userId).OnceAsync<Event>()).Select(item => new Event
+            return (await firebaseClient.Child("Events").Child(userId).OnceAsync<Event>()).Select(item => new Event
             {
                 Name = item.Object.Name,
                 Type = item.Object.Type,
                 Description = item.Object.Description,
                 Address = item.Object.Address,
-                Date = item.Object.Date,
+                Day = item.Object.Day,
+                Month = item.Object.Month,
+                Year = item.Object.Year,
                 Duration = item.Object.Duration,
                 Price = item.Object.Price,
                 MinimalAge = item.Object.MinimalAge,
-                PhotoReferences = item.Object.PhotoReferences
             }).ToList();
         }
         public async Task SaveUserUid(string userId)

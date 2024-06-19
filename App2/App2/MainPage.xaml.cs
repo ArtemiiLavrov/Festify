@@ -76,7 +76,9 @@ namespace App2
         }
         private async void RegButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegistrationPage());
+            var newReg = new NavigationPage(new RegistrationPage());
+            newReg.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
+            await Navigation.PushAsync(newReg);
         }
         private async void ResetPasswordClicked(object sender, EventArgs e)
         {

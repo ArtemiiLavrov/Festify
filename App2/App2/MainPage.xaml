@@ -37,8 +37,8 @@
             </Frame>
 
             <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
-                <Button x:Name="logButton" WidthRequest="115" Text="Войти" TextColor="White" BackgroundColor="#952ab8" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="LogButtonClick" CornerRadius="45" FontFamily="conthrax-sb"/>
-                <Button x:Name="regButton" WidthRequest="170" Text="РЕГИСТРАЦИЯ" TextColor="White" BackgroundColor="#952ab8" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="RegButtonClicked" CornerRadius="45" FontFamily="conthrax-sb"/>
+                <Button x:Name="logButton" FontSize="13"  WidthRequest="115" Text="Войти" TextColor="White" BackgroundColor="#952ab8" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="LogButtonClick" CornerRadius="45" FontFamily="conthrax-sb"/>
+                <Button x:Name="regButton" FontSize="13" WidthRequest="170" Text="РЕГИСТРАЦИЯ" TextColor="White" BackgroundColor="#952ab8" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="RegButtonClicked" CornerRadius="45" FontFamily="conthrax-sb"/>
             </StackLayout>
             <Button Text="Забыли пароль?" Grid.Row="0" TextColor="White" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Background="Transparent" FontFamily="conthrax-sb" Clicked="ResetPasswordClicked"/>
         </StackLayout>

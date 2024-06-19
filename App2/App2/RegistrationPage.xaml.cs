@@ -23,8 +23,10 @@ namespace App2
 		{
 			InitializeComponent();
             regImage.Source = ImageSource.FromResource("App2.Images.main.png");
+            NavigationPage.SetHasBackButton(this, false);
+            NavigationPage.SetHasNavigationBar(this, false);
         }
-       FirebaseClient client = new FirebaseClient("https://bulletin-app-1644c-default-rtdb.europe-west1.firebasedatabase.app/Users");
+        FirebaseClient client = new FirebaseClient("https://bulletin-app-1644c-default-rtdb.europe-west1.firebasedatabase.app/Users");
         public async void RegButtonClicked(object sender, EventArgs e)
         {
             Regex validateEmailRegex = new Regex("^\\S+@\\S+\\.\\S+$");
@@ -66,7 +68,7 @@ namespace App2
                 var fireBase = DependencyService.Get<IFirebaseAuthentificator>();
                 try
                 {
-                    var token = await fireBase.CreateUserWithEmailAndPasswordAsync(email, password);
+                    var token = await fireBase.CreateUserWithEmailAndPasswordAsync(email.ToLower(), password);
                     var isVerified = await fireBase.IsCurrentUserEmailVerified();
                     if (!isVerified)
                     {
@@ -82,10 +84,7 @@ namespace App2
                     var response = await client.Child("").PostAsync(userModel); 
                     regButton.Text = "УСПЕХ";
                     regButton.TextColor = Color.FromHex("#5E17EB");
-                    var menuPlusWorkPage = new MyMasterDetailPage(new MenuPage(), new WorkPage());
-                    NavigationPage.SetHasBackButton(menuPlusWorkPage, false);
-                    NavigationPage.SetHasNavigationBar(menuPlusWorkPage, false);
-                    await Navigation.PushAsync(menuPlusWorkPage);
+                    await Navigation.PushAsync(new MainPage());
                 }
                 catch (Exception ex)
                 {

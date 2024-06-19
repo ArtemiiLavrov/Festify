@@ -6,7 +6,7 @@
         <StackLayout BackgroundColor="Black" Padding="0,20,0,0">
             <Label x:Name="Name" Text="AAA" TextColor="#952ab8" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="20" TextTransform="Uppercase"/>
             <Label x:Name="Email" Text="BBB" TextColor="#952ab8" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="20" TextTransform="Uppercase"/>
-            <Button x:Name="Escape" BackgroundColor="White" CornerRadius="45" WidthRequest="250" HorizontalOptions="CenterAndExpand"/>
+            <Button x:Name="Escape" BackgroundColor="White" CornerRadius="45" WidthRequest="250" HorizontalOptions="CenterAndExpand" Clicked="DeregButtonClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

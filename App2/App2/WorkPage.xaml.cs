@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Firebase.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,7 @@ namespace App2
         public WorkPage()
         {
             InitializeComponent();
-            for (int i = 0; i<7; i++)
-            {
-                AddNewBulletin(new Event(), new Event()) ;
-            }
+            LoadAllEvents();
             
         }
         public void AddNewBulletin(Event newEvent1, Event newEvent2)
@@ -31,18 +29,20 @@ namespace App2
             };
 
             // Создаем первый StackLayout с изображением и текстом
-            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, newEvent1.Date.ToString(), "App2.Images.main.png");
+            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, newEvent1.Day.ToString(), "App2.Images.logo.jpg");
+            stackLayout1.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer1 = new TapGestureRecognizer();
             tapGestureRecognizer1.Tapped += (s, e) =>
             {
-                // Обработка нажатия на первый StackLayout
+               
             };
             stackLayout1.GestureRecognizers.Add(tapGestureRecognizer1);
 
             horizontalStack.Children.Add(stackLayout1);
 
             // Создаем второй StackLayout с изображением и текстом
-            StackLayout stackLayout2 = CreateStackLayout(newEvent2.Name, newEvent2.Date.ToString(), "App2.Images.main.png");
+            StackLayout stackLayout2 = CreateStackLayout(newEvent2.Name, newEvent2.Day.ToString(), "App2.Images.logo.jpg");
+            stackLayout2.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer2 = new TapGestureRecognizer();
             tapGestureRecognizer2.Tapped += EventTapped;
             stackLayout2.GestureRecognizers.Add(tapGestureRecognizer2);
@@ -76,6 +76,7 @@ namespace App2
             Label titleLabel = new Label
             {
                 Text = title,
+                TextColor = Color.White,
                 FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Center
             };
@@ -83,6 +84,7 @@ namespace App2
             Label descriptionLabel = new Label
             {
                 Text = description,
+                TextColor = Color.White,
                 HorizontalOptions = LayoutOptions.Center
             };
 
@@ -95,6 +97,31 @@ namespace App2
         private async void EventTapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new EventPage());
+        }
+        public async void LoadAllEvents()
+        {
+
+            try
+            {
+                FirebaseClient firebaseClient = new FirebaseClient("https://bulletin-app-1644c-default-rtdb.europe-west1.firebasedatabase.app/");
+                // Получаем все записи о событиях из базы данных
+                var events = await firebaseClient
+                    .Child("Events")
+                    .OnceAsync<Event>();
+                List<Event> eventsList = new List<Event>();
+                foreach (var eventSnapshot in events)
+                {
+                    eventsList.Add(eventSnapshot.Object);
+                }
+                for (int i = 0; i < eventsList.Count; i = i+2)
+                {
+                    AddNewBulletin(eventsList[i], eventsList[i + 1]);
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ошибка", ex.Message, "OK");
+            }
         }
     }
 }

@@ -10,9 +10,11 @@ namespace App2
         public string Type { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime Duration { get; set; }
-        public Money Price { get; set; }
+        public int Day { get; set; }
+        public int Month { get; set; }
+        public int Year { get; set; }
+        public string Duration { get; set; }
+        public int Price { get; set; }
         public int MinimalAge
         {
             get => minimalAge;
@@ -23,7 +25,7 @@ namespace App2
             }
         }
         private int minimalAge;
-        public List<string> PhotoReferences { get; set; }
+        //public List<string> PhotoReferences { get; set; }
         public override bool Equals(object obj)
         {
             return Equals(obj as Event);
@@ -31,13 +33,13 @@ namespace App2
         public bool Equals(Event other)
         {
             if (GetHashCode() != other.GetHashCode()) return false;
-            if (Name != other.Name || Type != other.Type || Description != other.Description || Address != other.Address || Date != other.Date || 
+            if (Name != other.Name || Type != other.Type || Description != other.Description || Address != other.Address || Day != other.Day || 
                 Duration != other.Duration || Price != other.Price || MinimalAge != other.MinimalAge) return false;
             else return true;
         }
         public override int GetHashCode()
         {
-            return GetHashCode();
+            return base.GetHashCode();
         }
     }
 }

@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
 
         <Image x:Name="regImage" Grid.Row="0" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
-        <Label Text="РЕГИСТРАЦИЯ" Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="36" FontAttributes="Bold" TextColor="White" FontFamily="conthrax-sb"/>
+        <Label Padding="0,0,0,60" Text="РЕГИСТРАЦИЯ" Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" TextColor="White" FontFamily="conthrax-sb"/>
         <StackLayout Grid.Row="0" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Padding="0,2" Margin="0,15">
             <Frame Style="{StaticResource RoundedEntryStyle}">
                 <Entry x:Name="nameField" TextColor="#5E17EB" Placeholder="ВВЕДИТЕ ВАШЕ ИМЯ" PlaceholderColor="#952ab8" HorizontalOptions="CenterAndExpand" 
