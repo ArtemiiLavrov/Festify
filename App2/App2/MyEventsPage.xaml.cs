@@ -1,23 +1,23 @@
-﻿using Firebase.Database;
+﻿using Android.Preferences;
+using Firebase.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace App2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WorkPage : ContentPage
+    public partial class MyEventsPage : ContentPage
     {
-        public WorkPage()
+        public MyEventsPage()
         {
             InitializeComponent();
-            LoadAllEvents();
-            
+            LoadMyEvents();
         }
         public void AddOneNewBulletin(Event newEvent1)
         {
@@ -40,7 +40,7 @@ namespace App2
             horizontalStack.Children.Add(stackLayout1);
             // Создаем черный StackLayout 
             StackLayout stackLayout2 = new StackLayout();
-            stackLayout2.BackgroundColor = Color.Black ;
+            stackLayout2.BackgroundColor = Color.Black;
             stackLayout2.WidthRequest = 185;
             horizontalStack.Children.Add(stackLayout2);
 
@@ -126,7 +126,7 @@ namespace App2
 
             return stackLayout;
         }
-        public async void LoadAllEvents()
+        public async void LoadMyEvents()
         {
             try
             {
@@ -135,27 +135,37 @@ namespace App2
                 var events = await firebaseClient
                     .Child("Events")
                     .OnceAsync<Event>();
-                List<Event> eventsList = new List<Event>();
+                List<Event> allEventsList = new List<Event>();
+                //выгружаем все объявления
                 foreach (var eventSnapshot in events)
                 {
-                    eventsList.Add(eventSnapshot.Object);
+                    allEventsList.Add(eventSnapshot.Object);
                 }
-                if (eventsList.Count%2 == 0 ) 
+                //создаём лист своих объявлений
+                List<Event> myEventsList = new List<Event>();
+                foreach (Event eventSnapshot in allEventsList)
                 {
-                    for (int i = 0; i < eventsList.Count; i = i + 2)
+                    if (eventSnapshot.Id == Preferences.Get("UUID", "1"))
                     {
-                        AddTwoNewBulletins(eventsList[i], eventsList[i + 1]); //Выводим записи попарно
+                        myEventsList.Add(eventSnapshot);
+                    }
+                }
+                if (myEventsList.Count % 2 == 0)
+                {
+                    for (int i = 0; i < myEventsList.Count; i = i + 2)
+                    {
+                        AddTwoNewBulletins(myEventsList[i], myEventsList[i + 1]); //Выводим записи попарно
                     }
                 }
                 else
                 {
-                    for (int i = 0; i < eventsList.Count-1; i = i + 2)
+                    for (int i = 0; i < myEventsList.Count - 1; i = i + 2)
                     {
-                        AddTwoNewBulletins(eventsList[i], eventsList[i + 1]); //Выводим записи попарно
+                        AddTwoNewBulletins(myEventsList[i], myEventsList[i + 1]); //Выводим записи попарно
                     }
-                    AddOneNewBulletin(eventsList[eventsList.Count - 1]);
+                    AddOneNewBulletin(myEventsList[myEventsList.Count - 1]);
                 }
-                
+
             }
             catch (Exception ex)
             {

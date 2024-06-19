@@ -20,6 +20,7 @@ namespace App2
         {
             Preferences.Set("auth", false);
             NavigationPage.SetHasNavigationBar(this, false);
+            await Navigation.PopToRootAsync();
             await Navigation.PushAsync(new MainPage());
         }
     }

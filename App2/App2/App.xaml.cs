@@ -20,30 +20,32 @@ namespace App2
             {
                 var myMasterDetailPage = new MyMasterDetailPage(new MenuPage(), new WorkPage());
                 var navigationPage = new NavigationPage(myMasterDetailPage);
+                navigationPage.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
                 //NavigationPage.SetHasNavigationBar(this, false);
                 //NavigationPage.SetHasBackButton(this, false);
                 MainPage = navigationPage;
             }
             else
-            { 
-                MainPage = new NavigationPage(new MainPage());
+            {
+                var newMain = new MainPage();
+                var newNavigationPage = new NavigationPage(newMain);
+                newNavigationPage.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
+                MainPage = newNavigationPage;
             }
-           
         }
-
         protected override void OnStart()
         {
-            //base.OnStart();
 
-            
         }
 
         protected override void OnSleep()
         {
+
         }
 
         protected override void OnResume()
         {
+
         }
     }
 }

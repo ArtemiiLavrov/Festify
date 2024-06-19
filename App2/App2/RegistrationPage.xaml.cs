@@ -23,8 +23,8 @@ namespace App2
 		{
 			InitializeComponent();
             regImage.Source = ImageSource.FromResource("App2.Images.main.png");
-            NavigationPage.SetHasBackButton(this, false);
-            NavigationPage.SetHasNavigationBar(this, false);
+            //NavigationPage.SetHasBackButton(this, false);
+            //NavigationPage.SetHasNavigationBar(this, false);
         }
         FirebaseClient client = new FirebaseClient("https://bulletin-app-1644c-default-rtdb.europe-west1.firebasedatabase.app/Users");
         public async void RegButtonClicked(object sender, EventArgs e)
@@ -73,24 +73,36 @@ namespace App2
                     if (!isVerified)
                     {
                         await fireBase.SendEmailVerificationAsync();
-                        await DisplayAlert("Регистрация", $"Письмо для подтверждения e-mail было отправлено на почту {email}", "Хорошо");
+                        SaveCredentials(nameField.Text);
+                        // Создание модели пользователя
+                        var userModel = new User()
+                        {
+                            Email = email,
+                            Name = Preferences.Get("username", "user"),
+                            Id = Preferences.Get("UUID", "1")
+                        };
+                        var response = await client.Child($"{userModel.Id}").PostAsync(userModel);
+                        await DisplayAlert("Регистрация", $"Письмо для подтверждения e-mail было отправлено на почту {email.ToLower()}. " +
+                            $"После верификации отправляйтесь на страницу входа.", "Хорошо");
                     }
-                    // Создание модели пользователя
-                    var userModel = new User()
+                    else
                     {
-                        Email = email,
-                        Name = nameField.Text
-                    };
-                    var response = await client.Child("").PostAsync(userModel); 
-                    regButton.Text = "УСПЕХ";
-                    regButton.TextColor = Color.FromHex("#5E17EB");
-                    await Navigation.PushAsync(new MainPage());
+                        regButton.Text = "УСПЕХ";
+                        await Navigation.PushAsync(new MainPage());
+                    }
                 }
                 catch (Exception ex)
                 {
                     await DisplayAlert("Ошибка", ex.Message, "OK");
                 }
             }
+        }
+        public void SaveCredentials(string username)
+        {
+            Guid UUID = Guid.NewGuid();
+            Preferences.Set("UUID", UUID.ToString());
+            Preferences.Set("username", username);
+            Preferences.Set("email", emailField.Text);
         }
     }
 }

@@ -85,7 +85,8 @@ namespace App2
                 Year = year,
                 Duration = Duration.Text,
                 Price = price,
-                MinimalAge = age
+                MinimalAge = age,
+                Id = Preferences.Get("UUID", "1")
             };
 
             FirebaseClient client = new FirebaseClient("https://bulletin-app-1644c-default-rtdb.europe-west1.firebasedatabase.app/");

@@ -15,6 +15,7 @@ namespace App2
         public int Year { get; set; }
         public string Duration { get; set; }
         public int Price { get; set; }
+        public string Id { get; set; }
         public int MinimalAge
         {
             get => minimalAge;
