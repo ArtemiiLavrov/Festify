@@ -3,8 +3,11 @@ using Android.Preferences;
 using App2.Droid;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Org.Json;
 using Plugin.Settings;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -26,33 +29,10 @@ namespace App2
         {
             string email = emailField.Text;
             string password = passField.Text;
-            //if (string.IsNullOrEmpty(email))
-            //{
-            //    //errText.Text = "E-mail не указан";
-            //    emailField.PlaceholderColor = Color.Red;
-            //}
-            //else if (!validateEmailRegex.IsMatch(email))
-            //{
-            //    //errText.Text = "E-mail должен быть указан в формате 'name@mail.com'";
-            //    await DisplayAlert("E-mail", "E-mail должен быть указан в формате 'name@mail.com'", "Хорошо");
-
-            //}
-            //else if (string.IsNullOrEmpty(password))
-            //{
-            //    passField.PlaceholderColor = Color.Red;
-            //}
-            //else if (password.Length < 8)
-            //{
-            //    await DisplayAlert("Пароль", "Для сохранения безопасности Ваших данных пароль не может быть короче, чем 8 символов", "Хорошо");
-            //}
-            //else if (!(password.Contains("!") || password.Contains("*") || password.Contains("#")))
-            //{
-            //    await DisplayAlert("Пароль", "Для сохранения безопасности Ваших данных пароль хотя бы один символ из следующего набора: !, *, #", "Хорошо");
-            //}
             var firebase = DependencyService.Get<IFirebaseAuthentificator>();
             try
             {
-                var token = await firebase.SignWithEmailAndPasswordAsync(email, password);
+                var token = await firebase.SignWithEmailAndPasswordAsync(email.ToLower(), password);
                 var isVerified = await firebase.IsCurrentUserEmailVerified();  
                 if (!isVerified)
                 {
@@ -61,7 +41,7 @@ namespace App2
                     return;
                 }
                 logButton.Text = "УСПЕХ";
-                SaveCredentials(email, password);
+                SaveCredentials(email);
                 var menuPlusWorkPage = new MyMasterDetailPage(new MenuPage(), new WorkPage());
                 NavigationPage.SetHasBackButton(menuPlusWorkPage, false);
                 NavigationPage.SetHasNavigationBar(menuPlusWorkPage, false);
@@ -113,10 +93,34 @@ namespace App2
                 await DisplayAlert("Сброс пароля", "Аккаунта с таким e-mail не существует", "OK");
             }
         }
-        public void SaveCredentials(string username, string password)
+        public void SaveCredentials(string email)
         {
             Preferences.Set("auth", true);
+            LoadUsersData(email);
+            
         }
-
+        public async void LoadUsersData(string email)
+        {
+            try
+            {
+                FirebaseClient firebaseClient = new FirebaseClient("https://bulletin-app-1644c-default-rtdb.europe-west1.firebasedatabase.app/");
+                // Получаем все записи о событиях из базы данных
+                var users = await firebaseClient
+                    .Child("Users")
+                    .Child("Users")
+                    .Child(email.ToLower().Replace(".","-"))
+                    .Child(email.ToLower().Replace(".", "-")+"2")
+                    .OnceAsync<User>();
+                User user = users.First().Object;
+                Preferences.Set("email", email);
+                Preferences.Set("username", user.Name);
+                Preferences.Set("UUID", user.UUID);
+                Preferences.Set("UPID", user.UPID);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ошибка", ex.Message, "OK");
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Android.Preferences;
-using Firebase.Database;
+﻿using Firebase.Database;
+using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace App2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MyEventsPage : ContentPage
+    public partial class FavoriteEvents : ContentPage
     {
-        public MyEventsPage()
+        public FavoriteEvents()
         {
             InitializeComponent();
-            LoadMyEvents();
+            LoadFavoriteEvents();
         }
         public void AddOneNewBulletin(Event newEvent1)
         {
@@ -74,6 +74,7 @@ namespace App2
             // Создаем второй StackLayout с изображением и текстом
             string date2 = newEvent1.Day.ToString() + "/" + newEvent1.Month.ToString() + "/" + newEvent1.Year.ToString();
             StackLayout stackLayout2 = CreateStackLayout(newEvent1.Name, date2, "App2.Images.logo.jpg");
+            stackLayout2.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer2 = new TapGestureRecognizer();
             tapGestureRecognizer2.Tapped += (s, e) =>
             {
@@ -87,7 +88,7 @@ namespace App2
             Bulletins.Children.Add(horizontalStack);
         }
 
-        private StackLayout CreateStackLayout(string title, string description, string imagePath)
+        private StackLayout CreateStackLayout(string title, string date, string imagePath) //создание макета объявления с краткой информацией в ленте
         {
             // Создаем StackLayout для изображения и текста
             StackLayout stackLayout = new StackLayout
@@ -118,7 +119,7 @@ namespace App2
 
             Label dateLabel = new Label
             {
-                Text = description,
+                Text = date,
                 TextColor = Color.White,
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center
@@ -130,29 +131,32 @@ namespace App2
 
             return stackLayout;
         }
-        public async void LoadMyEvents()
+        public async void LoadFavoriteEvents()
         {
             try
             {
                 FirebaseClient firebaseClient = new FirebaseClient("https://bulletin-app-1644c-default-rtdb.europe-west1.firebasedatabase.app/");
                 // Получаем все записи о событиях из базы данных
                 var events = await firebaseClient
-                    .Child("Events")
+                    .Child("Users").Child("Users").Child(Preferences.Get("UUID", "1")).Child("FavoriteEvents")
                     .OnceAsync<Event>();
-                List<Event> allEventsList = new List<Event>();
+                List<Event> allFavoriteEventsList = new List<Event>();
                 //выгружаем все объявления
                 foreach (var eventSnapshot in events)
                 {
-                    allEventsList.Add(eventSnapshot.Object);
+                    allFavoriteEventsList.Add(eventSnapshot.Object);
                 }
                 //создаём лист своих объявлений
                 List<Event> myEventsList = new List<Event>();
-                foreach (Event eventSnapshot in allEventsList)
+                foreach (Event eventSnapshot in allFavoriteEventsList)
                 {
-                    if (eventSnapshot.Id == Preferences.Get("UUID", "1"))
-                    {
                         myEventsList.Add(eventSnapshot);
-                    }
+                }
+                if (myEventsList.Count == 0)
+                {
+                    Label nullNotification = new Label() { Text = "У вас пока нет избранных объявлений", TextColor = Color.White, BackgroundColor = Color.Transparent, 
+                        VerticalOptions = LayoutOptions.CenterAndExpand, HorizontalOptions = LayoutOptions.CenterAndExpand, FontFamily = "conthrax-sb", FontSize = 13 };
+                    Bulletins.Children.Add(nullNotification);
                 }
                 if (myEventsList.Count % 2 == 0)
                 {
@@ -176,5 +180,7 @@ namespace App2
                 await DisplayAlert("Ошибка", ex.Message, "OK");
             }
         }
+
+
     }
 }

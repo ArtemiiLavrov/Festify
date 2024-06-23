@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App2.HelpPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame" x:Key="RoundedLabelStyle">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Margin" Value="0,0,0,10"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="WidthRequest" Value="320"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="Black">
+            <StackLayout>
+                <Label x:Name="HelpLabel" Text ="Помощь" TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="30" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
+                <Label x:Name="EmailLabel" Text="Почта поддержки"  TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="15" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
+                <Label x:Name="Functions" Text="Для предложений по добавлению функций приложения напишите на почту" Margin="0,0,0,0" TextColor="#952ab8" FontFamily="conthrax-sb" FontSize="15" WidthRequest="285" HeightRequest="40" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextTransform="Uppercase"/>
+                <Frame Style="{StaticResource RoundedLabelStyle}" x:Name="NameFrame">
+                    <Label x:Name="SupportEmailLabel" Text="a.mavrov.2005@gmail.com"  TextColor="#952ab8" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="20" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
+                </Frame>
+                <Label x:Name="Desing" Text="Для предложений по улучшению дизайна напишите на почту" Margin="0,0,0,0" TextColor="#952ab8" FontFamily="conthrax-sb" FontSize="15" WidthRequest="285" HeightRequest="40" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextTransform="Uppercase"/>
+                <Frame Style="{StaticResource RoundedLabelStyle}" x:Name="EmailFrame">
+                    <Label x:Name="SupportEmail2Label" Text="sofiamyshkina2806@gmail.com"  TextColor="#952ab8" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="20" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
+                </Frame>
+                <Label x:Name="WorkScheduleLabel" Text="График работы" Margin="0,0,0,0" TextColor="White" FontFamily="conthrax-sb" FontSize="15" WidthRequest="285" HeightRequest="40" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextTransform="Uppercase"/>
+                <Frame Style="{StaticResource RoundedLabelStyle}" x:Name="WorkFrame">
+                    <Label x:Name="WorkSchedule" Text="пн - пт                               9:00 - 17:00 (по мск)"  TextColor="#952ab8" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="18" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
+                </Frame>
+                <Label x:Name="UserGuideLabel" Text ="Руководство пользователя " TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="15" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

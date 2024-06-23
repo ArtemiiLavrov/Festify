@@ -28,7 +28,8 @@ namespace App2
                 HorizontalOptions = LayoutOptions.FillAndExpand // Растягиваем по горизонтали
             };
             // Создаем StackLayout с изображением и текстом
-            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, newEvent1.Day.ToString(), "App2.Images.logo.jpg");
+            string date = newEvent1.Day.ToString() + "/" + newEvent1.Month.ToString() + "/" + newEvent1.Year.ToString();
+            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, date, "App2.Images.logo.jpg");
             stackLayout1.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer1 = new TapGestureRecognizer();
             tapGestureRecognizer1.Tapped += (s, e) =>
@@ -58,7 +59,8 @@ namespace App2
             };
 
             // Создаем первый StackLayout с изображением и текстом
-            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, newEvent1.Day.ToString(), "App2.Images.logo.jpg");
+            string date1 = newEvent1.Day.ToString() + "/" + newEvent1.Month.ToString() + "/" + newEvent1.Year.ToString();
+            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, date1, "App2.Images.logo.jpg");
             stackLayout1.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer1 = new TapGestureRecognizer();
             tapGestureRecognizer1.Tapped += (s, e) =>
@@ -70,7 +72,8 @@ namespace App2
             horizontalStack.Children.Add(stackLayout1);
 
             // Создаем второй StackLayout с изображением и текстом
-            StackLayout stackLayout2 = CreateStackLayout(newEvent2.Name, newEvent2.Day.ToString(), "App2.Images.logo.jpg");
+            string date2 = newEvent1.Day.ToString() + "/" + newEvent1.Month.ToString() + "/" + newEvent1.Year.ToString();
+            StackLayout stackLayout2 = CreateStackLayout(newEvent1.Name, date2, "App2.Images.logo.jpg");
             stackLayout2.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer2 = new TapGestureRecognizer();
             tapGestureRecognizer2.Tapped += (s, e) =>
@@ -85,7 +88,7 @@ namespace App2
             Bulletins.Children.Add(horizontalStack);
         }
 
-        private StackLayout CreateStackLayout(string title, string description, string imagePath)
+        private StackLayout CreateStackLayout(string title, string date, string imagePath)
         {
             // Создаем StackLayout для изображения и текста
             StackLayout stackLayout = new StackLayout
@@ -110,19 +113,21 @@ namespace App2
                 Text = title,
                 TextColor = Color.White,
                 FontAttributes = FontAttributes.Bold,
-                HorizontalOptions = LayoutOptions.Center
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center
             };
 
-            Label descriptionLabel = new Label
+            Label dateLabel = new Label
             {
-                Text = description,
+                Text = date,
                 TextColor = Color.White,
-                HorizontalOptions = LayoutOptions.Center
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center
             };
 
             stackLayout.Children.Add(image);
             stackLayout.Children.Add(titleLabel);
-            stackLayout.Children.Add(descriptionLabel);
+            stackLayout.Children.Add(dateLabel);
 
             return stackLayout;
         }

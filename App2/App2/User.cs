@@ -8,7 +8,8 @@ namespace App2
     {
         public string Email { get; set; }
         public string Name { get; set; }
-        public List<string> EventLinks { get; set; }
-        public string Id { get; set; }
+        public List<string> FavoriteEventLinks { get; set; }
+        public string UUID { get; set; }
+        public string UPID { get; set; }
     }
 }

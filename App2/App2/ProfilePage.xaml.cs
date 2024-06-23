@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Java.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,13 @@ namespace App2
         public ProfilePage()
         {
             InitializeComponent();
+            Profile.Source = ImageSource.FromResource("App2.Images.profile.png");
+            CreateUserData();
+        }
+        public void CreateUserData()
+        {
+            Name.Text = Preferences.Get("username", "John Doe");
+            Email.Text = Preferences.Get("email", "festify.help@gmail.com");
         }
         private async void DeregButtonClicked(object sender, EventArgs e)
         {

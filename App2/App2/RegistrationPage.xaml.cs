@@ -13,6 +13,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Essentials;
 using Firebase.Database.Query;
+using Android.Mtp;
+using Newtonsoft.Json;
 
 namespace App2
 {
@@ -26,6 +28,7 @@ namespace App2
             //NavigationPage.SetHasBackButton(this, false);
             //NavigationPage.SetHasNavigationBar(this, false);
         }
+        int counterOfClicks = 0;
         FirebaseClient client = new FirebaseClient("https://bulletin-app-1644c-default-rtdb.europe-west1.firebasedatabase.app/Users");
         public async void RegButtonClicked(object sender, EventArgs e)
         {
@@ -64,43 +67,67 @@ namespace App2
                 await DisplayAlert("Пароль", "Пароли не совпадают", "Хорошо");
             }
             else
-            {                
+            {
+                counterOfClicks++;
+                string token;
                 var fireBase = DependencyService.Get<IFirebaseAuthentificator>();
-                try
+                if (counterOfClicks == 1)
                 {
-                    var token = await fireBase.CreateUserWithEmailAndPasswordAsync(email.ToLower(), password);
-                    var isVerified = await fireBase.IsCurrentUserEmailVerified();
-                    if (!isVerified)
+                    try
                     {
-                        await fireBase.SendEmailVerificationAsync();
-                        SaveCredentials(nameField.Text);
-                        // Создание модели пользователя
-                        var userModel = new User()
-                        {
-                            Email = email,
-                            Name = Preferences.Get("username", "user"),
-                            Id = Preferences.Get("UUID", "1")
-                        };
-                        var response = await client.Child($"{userModel.Id}").PostAsync(userModel);
-                        await DisplayAlert("Регистрация", $"Письмо для подтверждения e-mail было отправлено на почту {email.ToLower()}. " +
-                            $"После верификации отправляйтесь на страницу входа.", "Хорошо");
+                        token = await fireBase.CreateUserWithEmailAndPasswordAsync(email.ToLower(), password);
+                        regButton.Text = "РЕГИСТРАЦИЯ";
+                        await DisplayAlert("Аккаунт", "Данный аккаунт еще не был создан. Вы можете зарегистрироваться, нажав кнопку РЕГИСТРАЦИЯ", "Хорошо");
                     }
-                    else
+                    catch (Exception)
                     {
-                        regButton.Text = "УСПЕХ";
+                        await DisplayAlert("Ошибка", "Данный аккаунт уже зарегистрирован", "Хорошо");
                         await Navigation.PushAsync(new MainPage());
                     }
                 }
-                catch (Exception ex)
+                else if (counterOfClicks >= 2) 
                 {
-                    await DisplayAlert("Ошибка", ex.Message, "OK");
+                    try
+                    {
+                        var isVerified = await fireBase.IsCurrentUserEmailVerified();
+                        if (!isVerified)
+                        {
+                            await fireBase.SendEmailVerificationAsync();
+                            SaveCredentials(email, nameField.Text);
+                            // Создание модели пользователя
+                            var userModel = new User()
+                            {
+                                Email = email,
+                                Name = Preferences.Get("username", "user"),
+                                UUID = Preferences.Get("UUID", "1"),
+                                UPID = Preferences.Get("UPID", "1")
+                            };
+                            string jsonString = JsonConvert.SerializeObject(userModel);
+                            await client.Child("Users").Child(userModel.UUID).Child(Preferences.Get("UPID", "1")).PostAsync(jsonString);
+                            await DisplayAlert("Регистрация", $"Письмо для подтверждения e-mail было отправлено на почту {email.ToLower()}. " +
+                                    $"После верификации нажмите кнопку регистрации повторно.", "Хорошо");
+                        }
+                        else
+                        {
+                            regButton.Text = "УСПЕХ";
+                            await Navigation.PushAsync(new MainPage());
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        await DisplayAlert("Ошибка", ex.Message, "OK");
+
+                    }
                 }
+                
             }
         }
-        public void SaveCredentials(string username)
+        public void SaveCredentials(string email, string username)
         {
-            Guid UUID = Guid.NewGuid();
-            Preferences.Set("UUID", UUID.ToString());
+            string UUID = email.ToLower().Replace(".", "-");
+            string UPID = email.ToLower().Replace(".", "-") + "2";
+            Preferences.Set("UUID", UUID);
+            Preferences.Set("UPID", UPID.ToString());
             Preferences.Set("username", username);
             Preferences.Set("email", emailField.Text);
         }

@@ -4,12 +4,14 @@
              x:Class="App2.MenuPage">
     <ContentPage.Content>
         <StackLayout x:Name="Back" BackgroundColor="Black" Padding="0,80,0,0">
-            <Label x:Name="title" Text="Меню" TextColor="White" FontFamily = "conthrax-sb" FontAttributes="Bold" FontSize="25" HorizontalOptions="Center"/>
-            <Button x:Name="profileButton" Text="Мой профиль" BackgroundColor="Black" TextColor ="White" Font="conthrax-sb" Clicked="ProfileButtonClicked"/>
-            <Button x:Name="favoriteButton" Text="Избранное" BackgroundColor="Black" TextColor ="White" Font="conthrax-sb"/>
-            <Button x:Name="myEventsButton" Text="Мои объявления" BackgroundColor="Black" TextColor ="White" Font="conthrax-sb" Clicked ="MyEventsButtonClicked"/>
-            <Button x:Name="helpButton" Text="Помощь" BackgroundColor="Black" TextColor ="White" Font="conthrax-sb"/>
-            <Button x:Name="createEventButton" Text="Создать объявление" BackgroundColor="Black" TextColor ="White" Font="conthrax-sb" Clicked ="CreateEventButtonClicked"/>
+            <Label x:Name="title" Text=" Меню" TextColor="White" BackgroundColor="#952ab8" FontFamily = "conthrax-sb" FontAttributes="Bold" FontSize="28" HorizontalOptions="Center" WidthRequest="310" HorizontalTextAlignment="Center"/>
+            <Button x:Name="profileButton" Text="Мой профиль" BackgroundColor="Black" WidthRequest="320" TextColor ="White" Font="conthrax-sb" Clicked="ProfileButtonClicked" HorizontalOptions="Start"/>
+            <Button x:Name="allEventsButton" Text="Все объявления" BackgroundColor="Black" WidthRequest="320" TextColor ="White" Font="conthrax-sb" Clicked ="AllEventsButtonClicked" HorizontalOptions="Start"/>
+            <Button x:Name="createEventButton" Text="Создать объявление" BackgroundColor="Black" WidthRequest="320" TextColor ="White" Font="conthrax-sb" Clicked ="CreateEventButtonClicked" HorizontalOptions="Start"/>
+            <Button x:Name="favoriteButton" Text="Избранное" BackgroundColor="Black" WidthRequest="320" TextColor ="White" Font="conthrax-sb" Clicked ="FavoriteEventsButtonClicked" HorizontalOptions="Start"/>
+            <Button x:Name="myEventsButton" Text="Мои объявления" BackgroundColor="Black" WidthRequest="320" TextColor ="White" Font="conthrax-sb" Clicked ="MyEventsButtonClicked" HorizontalOptions="Start"/>
+            <Button x:Name="helpButton" Text="Помощь" BackgroundColor="Black" WidthRequest="320" TextColor ="White" Font="conthrax-sb" Clicked ="HelpButtonClicked" HorizontalOptions="Start"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

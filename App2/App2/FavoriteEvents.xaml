@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="App2.WorkPage">
+             x:Class="App2.FavoriteEvents">
     <ContentPage.Content>
         <ScrollView BackgroundColor="Black">
-            
             <StackLayout x:Name="Bulletins" Orientation="Vertical">
-                <Label x:Name="RecommendationsLabel" Text ="Рекомендации" TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="26" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
+                <Label x:Name="FavoriteLabel" Text ="Избранное" TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="30" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -34,6 +34,21 @@ namespace App2
             var createEventButtonClicked = new MyMasterDetailPage(new MenuPage(), new MyEventsPage());
             await Navigation.PushAsync(createEventButtonClicked);
         }
+        private async void FavoriteEventsButtonClicked(object sender, EventArgs e)
+        {
+            var createEventButtonClicked = new MyMasterDetailPage(new MenuPage(), new FavoriteEvents());
+            await Navigation.PushAsync(createEventButtonClicked);
+        }
+        private async void AllEventsButtonClicked(object sender, EventArgs e)
+        {
+            var createEventButtonClicked = new MyMasterDetailPage(new MenuPage(), new WorkPage());
+            await Navigation.PushAsync(createEventButtonClicked);
+        }
+        private async void HelpButtonClicked(object sender, EventArgs e)
+        {
+            var createEventButtonClicked = new MyMasterDetailPage(new MenuPage(), new HelpPage());
+            await Navigation.PushAsync(createEventButtonClicked);
+        }
     }
    
 }

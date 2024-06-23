@@ -42,7 +42,7 @@
                 <Entry x:Name="passField" TextColor="#5E17EB" IsPassword="True" Placeholder="ПОТДВЕРДИТЕ ПАРОЛЬ" PlaceholderColor="#952ab8" HorizontalOptions="CenterAndExpand" 
             HeightRequest="25" HorizontalTextAlignment="Center" WidthRequest="250" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
             </Frame>
-            <Button x:Name="regButton" WidthRequest="300" Text="РЕГИСТРАЦИЯ" TextColor="White" BackgroundColor="#952ab8" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="RegButtonClicked" CornerRadius="45" FontFamily="conthrax-sb"/>
+            <Button x:Name="regButton" FontSize="13" WidthRequest="300" Text="ПРОВЕРИТЬ АККАУНТ" TextColor="White" BackgroundColor="#952ab8" VerticalOptions="Center" HorizontalOptions="Center" TextTransform="Uppercase" Clicked="RegButtonClicked" CornerRadius="45" FontFamily="conthrax-sb"/>
             </StackLayout>
 
     </Grid>

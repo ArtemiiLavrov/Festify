@@ -5,6 +5,7 @@
     <ContentPage.Content>
         <ScrollView BackgroundColor="Black">
             <StackLayout x:Name="Bulletins" Orientation="Vertical">
+                <Label x:Name="MyEventsLabel" Text ="Мои объявления" TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="30" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

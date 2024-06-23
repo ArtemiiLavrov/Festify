@@ -2,11 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App2.ProfilePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame" x:Key="RoundedLabelStyle">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Margin" Value="0,0,0,10"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="WidthRequest" Value="320"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="Black" Padding="0,20,0,0">
-            <Label x:Name="Name" Text="AAA" TextColor="#952ab8" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="20" TextTransform="Uppercase"/>
-            <Label x:Name="Email" Text="BBB" TextColor="#952ab8" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="20" TextTransform="Uppercase"/>
-            <Button x:Name="Escape" BackgroundColor="White" CornerRadius="45" WidthRequest="250" HorizontalOptions="CenterAndExpand" Clicked="DeregButtonClicked"/>
+            <Image x:Name="Profile" WidthRequest="220"/>
+            <Label x:Name="PrifileLabel" Text ="Мой профиль" TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="30" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
+ 
+            <Label x:Name="NameLabel" Text="Имя" Margin="0,0,0,-10" TextColor="#952ab8" FontFamily="conthrax-sb" FontSize="15" WidthRequest="285" HeightRequest="40" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextTransform="Uppercase"/>
+            <Frame Style="{StaticResource RoundedLabelStyle}" x:Name="NameFrame">
+                <Label x:Name="Name" TextColor="#952ab8" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="20" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Label x:Name="EmailLabel" Text="Email" Margin="0,0,0,-10" TextColor="#952ab8" FontFamily="conthrax-sb" FontSize="15" WidthRequest="285" HeightRequest="40" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextTransform="Uppercase"/>
+            <Frame Style="{StaticResource RoundedLabelStyle}" x:Name="EmailFrame">
+                <Label x:Name="Email"  TextColor="#952ab8" HorizontalOptions="CenterAndExpand" FontFamily="conthrax-sb" FontSize="15" TextTransform="Uppercase" HorizontalTextAlignment="Center"/>
+            </Frame>
+
+
+            <Button x:Name="Escape" Text="Выйти из аккаунта" TextColor="White" BackgroundColor="#952ab8" CornerRadius="45" WidthRequest="250" HorizontalOptions="CenterAndExpand" Clicked="DeregButtonClicked" FontFamily="conthrax-sb" FontSize="13" TextTransform="Uppercase"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

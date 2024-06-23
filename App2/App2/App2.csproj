@@ -15,6 +15,7 @@
     <None Remove="Fonts\conthrax-sb.ttf" />
     <None Remove="Images\logo.jpg" />
     <None Remove="Images\main.png" />
+    <None Remove="Images\profile.png" />
     <None Remove="Images\profileIcon.png" />
     <None Remove="Images\regimage.png" />
   </ItemGroup>
@@ -22,6 +23,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Fonts\conthrax-sb.ttf" />
     <EmbeddedResource Include="Images\main.png" />
+    <EmbeddedResource Include="Images\profile.png" />
     <EmbeddedResource Include="Images\profileIcon.png" />
     <EmbeddedResource Include="Images\regimage.png" />
   </ItemGroup>
@@ -58,6 +60,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="EventPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FavoriteEvents.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="HelpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="MenuPage.xaml">

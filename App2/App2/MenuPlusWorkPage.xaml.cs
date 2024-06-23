@@ -44,5 +44,21 @@ namespace App2
             details.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
             Detail = details; // основное содержимое страницы
         }
+        public MyMasterDetailPage(MenuPage menu, FavoriteEvents work)
+        {
+            NavigationPage.SetHasNavigationBar(this, false);
+            Master = menu; // боковое меню
+            var details = new NavigationPage(work);
+            details.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
+            Detail = details; // основное содержимое страницы
+        }
+        public MyMasterDetailPage(MenuPage menu, HelpPage work)
+        {
+            NavigationPage.SetHasNavigationBar(this, false);
+            Master = menu; // боковое меню
+            var details = new NavigationPage(work);
+            details.BarBackgroundColor = (Color)App.Current.Resources["ToolbarColor"];
+            Detail = details; // основное содержимое страницы
+        }
     }
 }
