@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace App2.Droid
 {
-    public interface IFirebaseAuthentificator
+    public interface IFirebaseAuthenticator
     {
         Task<String> SignWithEmailAndPasswordAsync(string email, string password);
         Task<String> CreateUserWithEmailAndPasswordAsync(string email, string password);

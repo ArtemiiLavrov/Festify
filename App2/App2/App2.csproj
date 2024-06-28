@@ -29,11 +29,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.4.17342" />
     <PackageReference Include="FirebaseDatabase.net" Version="4.2.0" />
     <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
     <PackageReference Include="FireSharp" Version="2.0.4" />
     <PackageReference Include="Google.Apis.Auth" Version="1.68.0" />
     <PackageReference Include="Google.Apis.FirebaseRealtimeDatabase.v1beta" Version="1.68.0.2911" />
+    <PackageReference Include="Xam.Plugin.PdfRasterizer" Version="0.4.0" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
@@ -50,6 +52,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="MyEventPage.xaml.cs">
+      <DependentUpon>MyEventPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="MenuPlusWorkPage.xaml.cs">
       <DependentUpon>MenuPlusWorkPage.xaml</DependentUpon>
     </Compile>

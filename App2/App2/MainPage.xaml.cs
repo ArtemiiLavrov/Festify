@@ -29,7 +29,7 @@ namespace App2
         {
             string email = emailField.Text;
             string password = passField.Text;
-            var firebase = DependencyService.Get<IFirebaseAuthentificator>();
+            var firebase = DependencyService.Get<IFirebaseAuthenticator>();
             try
             {
                 var token = await firebase.SignWithEmailAndPasswordAsync(email.ToLower(), password);
@@ -73,7 +73,7 @@ namespace App2
                 //errText.Text = "E-mail должен быть указан в формате 'name@mail.com'";
                 await DisplayAlert("E-mail", "E-mail должен быть указан в формате 'name@mail.com'", "Хорошо");
             }
-            var firebase = DependencyService.Get<IFirebaseAuthentificator>();
+            var firebase = DependencyService.Get<IFirebaseAuthenticator>();
             try
             {
                 var token = await firebase.SignWithEmailAndPasswordAsync(email, password);
@@ -93,7 +93,7 @@ namespace App2
                 await DisplayAlert("Сброс пароля", "Аккаунта с таким e-mail не существует", "OK");
             }
         }
-        public void SaveCredentials(string email)
+        private void SaveCredentials(string email)
         {
             Preferences.Set("auth", true);
             LoadUsersData(email);

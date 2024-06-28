@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="App2.CreationOfEventPage">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CreationOfEventPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.Event">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEnAAABJQAiAAAAgAAAAAQAAAQAAIAGAQAAAQAAAAA=</HashCode>
+      <FileName>Event.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.EventPage">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAABAQAAAA=</HashCode>
+      <FileName>EventPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.FavoriteEvents">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAEAAAAAAABAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>FavoriteEvents.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.FirebaseHelper">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIgAAABAAAAAAAAAAAAAAAAAAAAAAAAACEA=</HashCode>
+      <FileName>FirebaseHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.FirebaseStorageHelper">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>FirebaseStorageHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.HelpPage">
+    <Position X="5.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HelpPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.MainPage">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAABAAACAAAAAAAAAAAAQAAAAABABAAAgAA=</HashCode>
+      <FileName>MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.MenuPage">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAIAAAAAAAAIAAIAAAAAAAAABAAABA=</HashCode>
+      <FileName>MenuPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.MyMasterDetailPage">
+    <Position X="7.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuPlusWorkPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.MyEventsPage">
+    <Position X="4" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAABAAAAEAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MyEventsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.ProfilePage">
+    <Position X="5.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>ProfilePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.RegistrationPage">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAABAAAAAAAAAAAAAAAAAAAAAABABAAAAAA=</HashCode>
+      <FileName>RegistrationPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.User">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAgEACAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App2.WorkPage">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAABAAAAEAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WorkPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="App2.Droid.IFirebaseAuthenticator">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAEAAAAAACAAAAAAQAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IFirebaseAuthenticator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

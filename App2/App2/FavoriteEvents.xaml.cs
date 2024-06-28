@@ -29,7 +29,7 @@ namespace App2
             };
             // Создаем StackLayout с изображением и текстом
             string date = newEvent1.Day.ToString() + "/" + newEvent1.Month.ToString() + "/" + newEvent1.Year.ToString();
-            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, date, "App2.Images.logo.jpg");
+            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name.ToUpper() , date, "App2.Images.logo.jpg");
             stackLayout1.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer1 = new TapGestureRecognizer();
             tapGestureRecognizer1.Tapped += (s, e) =>
@@ -60,7 +60,7 @@ namespace App2
 
             // Создаем первый StackLayout с изображением и текстом
             string date1 = newEvent1.Day.ToString() + "/" + newEvent1.Month.ToString() + "/" + newEvent1.Year.ToString();
-            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, date1, "App2.Images.logo.jpg");
+            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name.ToUpper(), date1, "App2.Images.logo.jpg");
             stackLayout1.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer1 = new TapGestureRecognizer();
             tapGestureRecognizer1.Tapped += (s, e) =>
@@ -72,8 +72,8 @@ namespace App2
             horizontalStack.Children.Add(stackLayout1);
 
             // Создаем второй StackLayout с изображением и текстом
-            string date2 = newEvent1.Day.ToString() + "/" + newEvent1.Month.ToString() + "/" + newEvent1.Year.ToString();
-            StackLayout stackLayout2 = CreateStackLayout(newEvent1.Name, date2, "App2.Images.logo.jpg");
+            string date2 = newEvent2.Day.ToString() + "/" + newEvent2.Month.ToString() + "/" + newEvent2.Year.ToString();
+            StackLayout stackLayout2 = CreateStackLayout(newEvent2.Name.ToUpper(), date2, "App2.Images.logo.jpg");
             stackLayout2.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer2 = new TapGestureRecognizer();
             tapGestureRecognizer2.Tapped += (s, e) =>
@@ -114,7 +114,8 @@ namespace App2
                 TextColor = Color.White,
                 FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center
+                HorizontalTextAlignment = TextAlignment.Center,
+                TextTransform = TextTransform.Uppercase
             };
 
             Label dateLabel = new Label

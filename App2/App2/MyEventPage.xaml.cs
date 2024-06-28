@@ -19,11 +19,11 @@ using static Android.Provider.ContactsContract.CommonDataKinds;
 namespace App2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EventPage : ContentPage
+    public partial class MyEventPage : ContentPage
     {
         FirebaseClient client = new FirebaseClient("https://bulletin-app-1644c-default-rtdb.europe-west1.firebasedatabase.app/");
         Event thisEvent;
-        public EventPage()
+        public MyEventPage()
         {
             StackLayout stackLayout = new StackLayout();
             Label nonExistentBulletin = new Label()
@@ -38,7 +38,7 @@ namespace App2
             };
             stackLayout.Children.Add(nonExistentBulletin);  
         }
-        public EventPage(Event e)
+        public MyEventPage(Event e)
         {
                 InitializeComponent();
                 thisEvent = e;
@@ -51,6 +51,32 @@ namespace App2
                 Price.Text = $"{e.Price} рублей";
                 MinimalAge.Text = e.MinimalAge.ToString();
                 LoadFavoriteEvents();
+        }
+        private async void DeleteEvent(object sender, EventArgs e)
+        {
+            await DeleteObjectByComparisonAsync("Events", thisEvent);
+        }
+        public async Task DeleteObjectByComparisonAsync(string node, Event targetEvent)
+        {
+            try
+            {
+                var allEvents = await client.Child(node).OnceAsync<Event>();
+
+                foreach (var firebaseEvent in allEvents)
+                {
+                    var eventData = firebaseEvent.Object;
+                    if (targetEvent.Equals(eventData))
+                    {
+                        await client.Child(node).Child(firebaseEvent.Key).DeleteAsync();
+                        await DisplayAlert("Удаление", "Объявление было успешно удалено", "ОК");
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ошибка", ex.Message, "OK");
+            }
         }
         private async void AddToFavorite(object sender, EventArgs e)
         {

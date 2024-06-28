@@ -70,7 +70,7 @@ namespace App2
             {
                 counterOfClicks++;
                 string token;
-                var fireBase = DependencyService.Get<IFirebaseAuthentificator>();
+                var fireBase = DependencyService.Get<IFirebaseAuthenticator>();
                 if (counterOfClicks == 1)
                 {
                     try
@@ -79,9 +79,9 @@ namespace App2
                         regButton.Text = "РЕГИСТРАЦИЯ";
                         await DisplayAlert("Аккаунт", "Данный аккаунт еще не был создан. Вы можете зарегистрироваться, нажав кнопку РЕГИСТРАЦИЯ", "Хорошо");
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        await DisplayAlert("Ошибка", "Данный аккаунт уже зарегистрирован", "Хорошо");
+                        await DisplayAlert("Ошибка", "Данный аккаунт уже был зарегистрирован ранее. Пожалуйста, выполните вход", "Хорошо");
                         await Navigation.PushAsync(new MainPage());
                     }
                 }

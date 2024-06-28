@@ -1,8 +1,11 @@
 ﻿using Android.Preferences;
 using Firebase.Database;
+using Firebase.Database.Query;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -27,18 +30,20 @@ namespace App2
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.FillAndExpand // Растягиваем по горизонтали
             };
+
             // Создаем StackLayout с изображением и текстом
             string date = newEvent1.Day.ToString() + "/" + newEvent1.Month.ToString() + "/" + newEvent1.Year.ToString();
-            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, date, "App2.Images.logo.jpg");
+            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name.ToUpper(), date, "App2.Images.logo.jpg");
             stackLayout1.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer1 = new TapGestureRecognizer();
             tapGestureRecognizer1.Tapped += (s, e) =>
             {
-                Navigation.PushAsync(new EventPage(newEvent1));
+                Navigation.PushAsync(new MyEventPage(newEvent1));
             };
             stackLayout1.GestureRecognizers.Add(tapGestureRecognizer1);
 
             horizontalStack.Children.Add(stackLayout1);
+
             // Создаем черный StackLayout 
             StackLayout stackLayout2 = new StackLayout();
             stackLayout2.BackgroundColor = Color.Black;
@@ -58,26 +63,29 @@ namespace App2
                 HorizontalOptions = LayoutOptions.FillAndExpand // Растягиваем по горизонтали
             };
 
+
             // Создаем первый StackLayout с изображением и текстом
             string date1 = newEvent1.Day.ToString() + "/" + newEvent1.Month.ToString() + "/" + newEvent1.Year.ToString();
-            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name, date1, "App2.Images.logo.jpg");
+            StackLayout stackLayout1 = CreateStackLayout(newEvent1.Name.ToUpper(), date1, "App2.Images.logo.jpg");
             stackLayout1.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer1 = new TapGestureRecognizer();
             tapGestureRecognizer1.Tapped += (s, e) =>
             {
-                Navigation.PushAsync(new EventPage(newEvent1));
+                Navigation.PushAsync(new MyEventPage(newEvent1));
             };
             stackLayout1.GestureRecognizers.Add(tapGestureRecognizer1);
 
             horizontalStack.Children.Add(stackLayout1);
 
+
             // Создаем второй StackLayout с изображением и текстом
-            string date2 = newEvent1.Day.ToString() + "/" + newEvent1.Month.ToString() + "/" + newEvent1.Year.ToString();
-            StackLayout stackLayout2 = CreateStackLayout(newEvent1.Name, date2, "App2.Images.logo.jpg");
+            string date2 = newEvent2.Day.ToString() + "/" + newEvent2.Month.ToString() + "/" + newEvent2.Year.ToString();
+            StackLayout stackLayout2 = CreateStackLayout(newEvent2.Name.ToUpper(), date2, "App2.Images.logo.jpg");
+            stackLayout2.BackgroundColor = Color.FromHex("#4a4b4d");
             var tapGestureRecognizer2 = new TapGestureRecognizer();
             tapGestureRecognizer2.Tapped += (s, e) =>
             {
-                Navigation.PushAsync(new EventPage(newEvent2));
+                Navigation.PushAsync(new MyEventPage(newEvent2));
             };
             stackLayout2.GestureRecognizers.Add(tapGestureRecognizer2);
 
@@ -113,7 +121,8 @@ namespace App2
                 TextColor = Color.White,
                 FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Center,
-                HorizontalTextAlignment = TextAlignment.Center
+                HorizontalTextAlignment = TextAlignment.Center,
+                TextTransform = TextTransform.Uppercase
             };
 
             Label dateLabel = new Label

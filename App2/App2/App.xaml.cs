@@ -7,7 +7,6 @@ using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static Android.Telecom.Call;
 
 namespace App2
 {

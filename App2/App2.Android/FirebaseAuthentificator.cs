@@ -17,7 +17,7 @@ using Xamarin.Forms;
 [assembly: Xamarin.Forms.Dependency(typeof(FirebaseAuthentificator))]
 namespace App2.Droid
 {
-    public class FirebaseAuthentificator : IFirebaseAuthentificator
+    public class FirebaseAuthentificator : IFirebaseAuthenticator
     {
         public async Task<string> CreateUserWithEmailAndPasswordAsync(string email, string password)
         {
